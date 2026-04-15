@@ -29,7 +29,20 @@ const sorted = casinos.sort((a, b) => b.data.rating - a.data.rating);
             class="group rounded-xl border border-gray-800 bg-gray-900 p-6 transition-colors hover:border-amber-400/50"
           >
             <div class="flex items-center justify-between">
-              <h2 class="text-lg font-semibold group-hover:text-amber-400">{casino.data.name}</h2>
+              <div class="flex items-center gap-3">
+                {casino.data.logo && (
+                  <img
+                    src={casino.data.logo}
+                    alt={`Logo ${casino.data.name}`}
+                    width={40}
+                    height={40}
+                    loading="lazy"
+                    decoding="async"
+                    class="h-10 w-10 shrink-0 rounded-lg object-contain"
+                  />
+                )}
+                <h2 class="text-lg font-semibold group-hover:text-amber-400">{casino.data.name}</h2>
+              </div>
               <span class="rounded-full bg-amber-400/10 px-2 py-1 text-sm font-medium text-amber-400">
                 {casino.data.rating}/5
               </span>

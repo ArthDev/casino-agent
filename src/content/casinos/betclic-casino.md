@@ -5,6 +5,7 @@ rating: 4.3
 bonus: "Jusqu'à 500€ de bonus sur le premier dépôt"
 description: "Betclic Casino est la section casino du célèbre opérateur français agréé ANJ, offrant une expérience de jeu légale et sécurisée en France."
 affiliateUrl: "https://example.com/go/betclic-casino"
+logo: "/images/casinos/betclic-casino.svg"
 pros:
   - "Licence ANJ : légal et régulé en France"
   - "Marque française de confiance et sponsor sportif majeur"

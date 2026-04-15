@@ -5,6 +5,7 @@ rating: 4.1
 bonus: "100% jusqu'à 500€ + 100 tours gratuits"
 description: "Vegas Plus est un casino en ligne convivial proposant un large choix de jeux et une offre de bienvenue attractive avec tours gratuits."
 affiliateUrl: "https://example.com/go/vegas-plus"
+logo: "/images/casinos/vegas-plus.svg"
 pros:
   - "Interface simple et accessible aux débutants"
   - "Bonus de bienvenue avec tours gratuits inclus"

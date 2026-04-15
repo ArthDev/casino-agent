@@ -5,6 +5,7 @@ rating: 4.2
 bonus: "120% jusqu'à 2 500€ + 50 tours gratuits"
 description: "Vulkan Vegas est un casino en ligne généreux proposant un bonus de bienvenue massif et un catalogue de plus de 5 000 jeux de fournisseurs premium."
 affiliateUrl: "https://example.com/go/vulkan-vegas"
+logo: "/images/casinos/vulkan-vegas.svg"
 pros:
   - "Bonus de bienvenue très généreux jusqu'à 2 500€"
   - "Catalogue impressionnant de plus de 5 000 jeux"

@@ -5,6 +5,7 @@ rating: 4.5
 bonus: "100% jusqu'à 500€ + 100 tours gratuits"
 description: "Casumo est un casino en ligne primé au concept gamifié unique, offrant une aventure ludique avec récompenses et un catalogue de jeux premium."
 affiliateUrl: "https://example.com/go/casumo-casino"
+logo: "/images/casinos/casumo-casino.svg"
 pros:
   - "Concept gamifié unique avec aventure et récompenses"
   - "Casino primé à de multiples reprises (EGR Awards)"

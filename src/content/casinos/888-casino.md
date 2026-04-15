@@ -5,6 +5,7 @@ rating: 4.4
 bonus: "100% jusqu'à 500€ + 88€ gratuits sans dépôt"
 description: "888 Casino est un acteur historique du casino en ligne, coté en bourse et reconnu pour sa fiabilité et son offre généreuse sans dépôt."
 affiliateUrl: "https://example.com/go/888-casino"
+logo: "/images/casinos/888-casino.svg"
 pros:
   - "88€ offerts sans dépôt à l'inscription"
   - "Casino établi depuis 1997, coté en bourse"

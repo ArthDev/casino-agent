@@ -68,7 +68,18 @@ const reviewSchema = {
 
     <header class="mt-6">
       <div class="flex items-start justify-between gap-4">
-        <h1 class="text-3xl font-bold md:text-4xl">{casino.data.name}</h1>
+        <div class="flex items-center gap-4">
+          {casino.data.logo && (
+            <img
+              src={casino.data.logo}
+              alt={`Logo ${casino.data.name}`}
+              width={64}
+              height={64}
+              class="h-16 w-16 shrink-0 rounded-xl object-contain"
+            />
+          )}
+          <h1 class="text-3xl font-bold md:text-4xl">{casino.data.name}</h1>
+        </div>
         <span class="shrink-0 rounded-full bg-amber-400/10 px-3 py-1 text-lg font-bold text-amber-400">
           {casino.data.rating}/5
         </span>
@@ -89,7 +100,7 @@ const reviewSchema = {
 
     <div class="mt-8 grid gap-6 sm:grid-cols-2">
       <div class="rounded-lg border border-green-800/50 bg-green-900/10 p-4">
-        <h2 class="font-semibold text-green-400">Avantages</h2>
+        <h2 class="text-xl font-semibold text-green-400">Avantages</h2>
         <ul class="mt-2 space-y-1 text-sm text-gray-300">
           {casino.data.pros.map((pro) => (
             <li class="flex gap-2">
@@ -99,7 +110,7 @@ const reviewSchema = {
         </ul>
       </div>
       <div class="rounded-lg border border-red-800/50 bg-red-900/10 p-4">
-        <h2 class="font-semibold text-red-400">Inconvenients</h2>
+        <h2 class="text-xl font-semibold text-red-400">Inconvenients</h2>
         <ul class="mt-2 space-y-1 text-sm text-gray-300">
           {casino.data.cons.map((con) => (
             <li class="flex gap-2">

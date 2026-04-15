@@ -5,6 +5,7 @@ rating: 4.6
 bonus: "200% jusqu'à 1 000€ sur le premier dépôt"
 description: "Stake est un casino en ligne innovant spécialisé dans les crypto-monnaies, proposant des milliers de jeux et des originaux exclusifs."
 affiliateUrl: "https://example.com/go/stake"
+logo: "/images/casinos/stake.svg"
 pros:
   - "Dépôts et retraits crypto ultra-rapides"
   - "Jeux originaux Stake exclusifs et prouvablement équitables"

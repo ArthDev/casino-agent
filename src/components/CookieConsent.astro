@@ -1,0 +1,62 @@
+---
+/**
+ * GDPR-compliant cookie consent banner.
+ * Only shown when GA4 is configured (Plausible is cookieless).
+ * Stores consent in localStorage to avoid re-prompting.
+ */
+const ga4Id = import.meta.env.PUBLIC_GA4_ID;
+---
+
+{ga4Id && (
+  <div
+    id="cookie-consent"
+    class="fixed bottom-0 left-0 right-0 z-50 hidden border-t border-gray-800 bg-gray-900 p-4"
+    role="dialog"
+    aria-label="Consentement cookies"
+  >
+    <div class="mx-auto flex max-w-6xl flex-col items-center gap-4 sm:flex-row sm:justify-between">
+      <p class="text-sm text-gray-300">
+        Nous utilisons des cookies pour analyser le trafic. Acceptez-vous les cookies analytiques ?
+      </p>
+      <div class="flex gap-3">
+        <button
+          id="cookie-reject"
+          class="rounded-lg border border-gray-700 px-4 py-2 text-sm text-gray-300 hover:bg-gray-800 transition-colors"
+        >
+          Refuser
+        </button>
+        <button
+          id="cookie-accept"
+          class="rounded-lg bg-amber-400 px-4 py-2 text-sm font-semibold text-gray-950 hover:bg-amber-300 transition-colors"
+        >
+          Accepter
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function() {
+      var consent = localStorage.getItem('cookie_consent');
+      if (consent === 'granted') {
+        if (window.__loadGA4) window.__loadGA4();
+        return;
+      }
+      if (consent === 'denied') return;
+
+      var banner = document.getElementById('cookie-consent');
+      if (banner) banner.classList.remove('hidden');
+
+      document.getElementById('cookie-accept')?.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'granted');
+        banner?.classList.add('hidden');
+        if (window.__loadGA4) window.__loadGA4();
+      });
+
+      document.getElementById('cookie-reject')?.addEventListener('click', function() {
+        localStorage.setItem('cookie_consent', 'denied');
+        banner?.classList.add('hidden');
+      });
+    })();
+  </script>
+)}

@@ -1,0 +1,41 @@
+---
+import { getCloakedUrl } from '../lib/affiliates';
+
+interface Props {
+  partnerId: string;
+  placement?: string;
+  class?: string;
+}
+
+const { partnerId, placement = 'inline', class: className } = Astro.props;
+const href = getCloakedUrl(partnerId);
+---
+
+<a
+  href={href}
+  target="_blank"
+  rel="noopener sponsored nofollow"
+  class={className}
+  data-partner={partnerId}
+  data-placement={placement}
+>
+  <slot />
+</a>
+
+<script>
+  import { trackAffiliateClick } from '../lib/tracking';
+
+  document.querySelectorAll<HTMLAnchorElement>('a[data-partner]').forEach((link) => {
+    link.addEventListener('click', () => {
+      const partnerId = link.dataset.partner;
+      const placement = link.dataset.placement;
+      if (partnerId) {
+        trackAffiliateClick({
+          partnerId,
+          placement: placement ?? 'unknown',
+          pageUrl: window.location.href,
+        });
+      }
+    });
+  });
+</script>

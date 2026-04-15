@@ -1,0 +1,29 @@
+---
+import { partners, buildAffiliateUrl } from '../../lib/affiliates';
+
+export function getStaticPaths() {
+  return Object.keys(partners).map((key) => ({
+    params: { partner: key },
+    props: { partnerKey: key },
+  }));
+}
+
+const { partnerKey } = Astro.props;
+const targetUrl = buildAffiliateUrl(partnerKey);
+---
+
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="refresh" content={`0;url=${targetUrl}`} />
+    <title>Redirection...</title>
+    <meta name="robots" content="noindex, nofollow" />
+  </head>
+  <body>
+    <p>
+      Redirection en cours vers {partners[partnerKey]?.name ?? 'notre partenaire'}...
+      <a href={targetUrl} rel="noopener sponsored nofollow">Cliquer ici</a> si la redirection ne fonctionne pas.
+    </p>
+  </body>
+</html>

@@ -1,0 +1,42 @@
+---
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-auto border-t border-gray-800 bg-gray-950 py-12">
+  <div class="mx-auto max-w-6xl px-4">
+    <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+      <div>
+        <p class="text-lg font-bold text-white">Casino<span class="text-amber-400">Guide</span></p>
+        <p class="mt-2 text-sm text-gray-400">
+          Comparatifs et avis indépendants des meilleurs casinos en ligne.
+        </p>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Navigation</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/casinos/" class="text-sm text-gray-400 hover:text-amber-400">Casinos</a></li>
+          <li><a href="/guides/" class="text-sm text-gray-400 hover:text-amber-400">Guides</a></li>
+          <li><a href="/bonus/" class="text-sm text-gray-400 hover:text-amber-400">Bonus</a></li>
+          <li><a href="/comparatifs/" class="text-sm text-gray-400 hover:text-amber-400">Comparatifs</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Informations</h3>
+        <ul class="mt-3 space-y-2">
+          <li><a href="/a-propos/" class="text-sm text-gray-400 hover:text-amber-400">A propos</a></li>
+          <li><a href="/contact/" class="text-sm text-gray-400 hover:text-amber-400">Contact</a></li>
+          <li><a href="/mentions-legales/" class="text-sm text-gray-400 hover:text-amber-400">Mentions legales</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3 class="text-sm font-semibold uppercase tracking-wider text-gray-300">Jeu responsable</h3>
+        <p class="mt-3 text-sm text-gray-400">
+          Le jeu comporte des risques. Jouez de maniere responsable. 18+
+        </p>
+      </div>
+    </div>
+    <div class="mt-8 border-t border-gray-800 pt-6 text-center text-sm text-gray-500">
+      &copy; {year} CasinoGuide. Tous droits reserves.
+    </div>
+  </div>
+</footer>

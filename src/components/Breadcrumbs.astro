@@ -1,0 +1,45 @@
+---
+import SchemaMarkup from './SchemaMarkup.astro';
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+const siteUrl = Astro.site?.origin ?? '';
+
+const breadcrumbSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'BreadcrumbList',
+  itemListElement: items.map((item, index) => ({
+    '@type': 'ListItem',
+    position: index + 1,
+    name: item.label,
+    ...(item.href ? { item: `${siteUrl}${item.href}` } : {}),
+  })),
+};
+---
+
+<nav aria-label="Breadcrumb" class="text-sm text-gray-400">
+  <ol class="flex flex-wrap items-center gap-1">
+    {items.map((item, index) => (
+      <li class="flex items-center gap-1">
+        {index > 0 && <span class="text-gray-600">/</span>}
+        {item.href ? (
+          <a href={item.href} class="hover:text-amber-400 transition-colors">
+            {item.label}
+          </a>
+        ) : (
+          <span class="text-gray-300">{item.label}</span>
+        )}
+      </li>
+    ))}
+  </ol>
+</nav>
+
+<SchemaMarkup schema={breadcrumbSchema} />

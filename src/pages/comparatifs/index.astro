@@ -1,0 +1,62 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const casinos = await getCollection('casinos');
+const sorted = casinos.sort((a, b) => b.data.rating - a.data.rating);
+---
+
+<BaseLayout
+  title="Comparatif casinos en ligne - Tableau comparatif"
+  description="Comparez les casinos en ligne cote a cote : bonus, notes, avantages et inconvenients."
+>
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <Breadcrumbs items={[{ label: 'Accueil', href: '/' }, { label: 'Comparatifs' }]} />
+
+    <h1 class="mt-6 text-3xl font-bold md:text-4xl">Comparatif des casinos</h1>
+    <p class="mt-3 max-w-2xl text-gray-400">
+      Tous les casinos cote a cote pour vous aider a choisir.
+    </p>
+
+    {sorted.length === 0 ? (
+      <p class="mt-8 text-gray-500">Aucun casino a comparer pour le moment.</p>
+    ) : (
+      <div class="mt-8 overflow-x-auto">
+        <table class="w-full text-left text-sm">
+          <thead class="border-b border-gray-800 text-xs uppercase tracking-wider text-gray-400">
+            <tr>
+              <th class="py-3 pr-4">Casino</th>
+              <th class="py-3 pr-4">Note</th>
+              <th class="py-3 pr-4">Bonus</th>
+              <th class="py-3">Lien</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-gray-800">
+            {sorted.map((casino) => (
+              <tr class="hover:bg-gray-900/50">
+                <td class="py-3 pr-4 font-medium">
+                  <a href={`/casinos/${casino.data.slug}/`} class="hover:text-amber-400">
+                    {casino.data.name}
+                  </a>
+                </td>
+                <td class="py-3 pr-4 text-amber-400">{casino.data.rating}/5</td>
+                <td class="py-3 pr-4 text-gray-300">{casino.data.bonus}</td>
+                <td class="py-3">
+                  <a
+                    href={casino.data.affiliateUrl}
+                    target="_blank"
+                    rel="noopener sponsored"
+                    class="text-amber-400 hover:underline"
+                  >
+                    Visiter
+                  </a>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    )}
+  </div>
+</BaseLayout>

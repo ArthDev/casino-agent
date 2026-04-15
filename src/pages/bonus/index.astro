@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+
+const casinos = await getCollection('casinos');
+const withBonuses = casinos
+  .filter((c) => c.data.bonus)
+  .sort((a, b) => b.data.rating - a.data.rating);
+---
+
+<BaseLayout
+  title="Bonus casino en ligne - Les meilleures offres"
+  description="Comparez les meilleurs bonus de bienvenue des casinos en ligne : tours gratuits, bonus de depot et offres exclusives."
+>
+  <div class="mx-auto max-w-6xl px-4 py-8">
+    <Breadcrumbs items={[{ label: 'Accueil', href: '/' }, { label: 'Bonus' }]} />
+
+    <h1 class="mt-6 text-3xl font-bold md:text-4xl">Bonus casino en ligne</h1>
+    <p class="mt-3 max-w-2xl text-gray-400">
+      Les meilleures offres de bienvenue et promotions.
+    </p>
+
+    {withBonuses.length === 0 ? (
+      <p class="mt-8 text-gray-500">Aucun bonus disponible pour le moment.</p>
+    ) : (
+      <div class="mt-8 space-y-4">
+        {withBonuses.map((casino) => (
+          <div class="flex flex-col gap-4 rounded-xl border border-gray-800 bg-gray-900 p-6 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <h2 class="text-lg font-semibold">{casino.data.name}</h2>
+              <p class="mt-1 text-amber-400 font-medium">{casino.data.bonus}</p>
+            </div>
+            <a
+              href={casino.data.affiliateUrl}
+              target="_blank"
+              rel="noopener sponsored"
+              class="shrink-0 rounded-lg bg-amber-400 px-6 py-2 text-center text-sm font-semibold text-gray-950 hover:bg-amber-300 transition-colors"
+            >
+              Obtenir le bonus
+            </a>
+          </div>
+        ))}
+      </div>
+    )}
+  </div>
+</BaseLayout>

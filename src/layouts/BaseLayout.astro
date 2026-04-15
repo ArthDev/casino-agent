@@ -1,11 +1,16 @@
 ---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import '../styles/global.css';
+
 interface Props {
   title: string;
   description: string;
   canonicalUrl?: string;
+  ogImage?: string;
 }
 
-const { title, description, canonicalUrl } = Astro.props;
+const { title, description, canonicalUrl, ogImage } = Astro.props;
 const siteUrl = Astro.site?.origin ?? '';
 const canonical = canonicalUrl ?? Astro.url.href;
 ---
@@ -23,11 +28,17 @@ const canonical = canonicalUrl ?? Astro.url.href;
     <meta property="og:description" content={description} />
     <meta property="og:url" content={canonical} />
     <meta property="og:type" content="website" />
+    {ogImage && <meta property="og:image" content={`${siteUrl}${ogImage}`} />}
     <meta name="twitter:card" content="summary_large_image" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <slot name="head" />
   </head>
-  <body class="min-h-screen bg-gray-950 text-gray-100 antialiased">
-    <slot />
+  <body class="flex min-h-screen flex-col bg-gray-950 text-gray-100 antialiased">
+    <Header />
+    <main class="flex-1">
+      <slot />
+    </main>
+    <Footer />
   </body>
 </html>

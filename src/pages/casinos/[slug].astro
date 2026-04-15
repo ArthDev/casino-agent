@@ -1,5 +1,5 @@
 ---
-import { getCollection } from 'astro:content';
+import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
@@ -13,7 +13,7 @@ export async function getStaticPaths() {
 }
 
 const { casino } = Astro.props;
-const { Content } = await casino.render();
+const { Content } = await render(casino);
 const siteUrl = Astro.site?.origin ?? '';
 
 const reviewSchema = {

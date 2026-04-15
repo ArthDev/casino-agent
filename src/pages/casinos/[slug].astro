@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
 
 export async function getStaticPaths() {
   const casinos = await getCollection('casinos');
@@ -15,6 +16,17 @@ export async function getStaticPaths() {
 const { casino } = Astro.props;
 const { Content } = await render(casino);
 const siteUrl = Astro.site?.origin ?? '';
+
+const allCasinos = await getCollection('casinos');
+const relatedCasinos = allCasinos
+  .filter((c) => c.data.slug !== casino.data.slug)
+  .sort((a, b) => Math.abs(a.data.rating - casino.data.rating) - Math.abs(b.data.rating - casino.data.rating))
+  .slice(0, 3)
+  .map((c) => ({
+    title: c.data.name,
+    href: `/casinos/${c.data.slug}/`,
+    description: c.data.description,
+  }));
 
 const reviewSchema = {
   '@context': 'https://schema.org',
@@ -101,5 +113,7 @@ const reviewSchema = {
     <div class="prose prose-invert mt-8 max-w-none">
       <Content />
     </div>
+
+    <RelatedContent heading="Casinos similaires" items={relatedCasinos} />
   </article>
 </BaseLayout>

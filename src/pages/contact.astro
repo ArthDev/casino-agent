@@ -1,0 +1,50 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="Contact | CasinoGuide"
+  description="Contactez l'equipe CasinoGuide pour toute question, suggestion ou demande de partenariat."
+>
+  <article class="mx-auto max-w-4xl px-4 py-8">
+    <Breadcrumbs
+      items={[
+        { label: 'Accueil', href: '/' },
+        { label: 'Contact' },
+      ]}
+    />
+
+    <h1 class="mt-6 text-3xl font-bold md:text-4xl">Contact</h1>
+
+    <div class="prose prose-invert mt-8 max-w-none">
+      <p>
+        Vous souhaitez nous contacter ? Nous sommes a votre ecoute pour toute question,
+        suggestion ou demande de partenariat.
+      </p>
+
+      <h2>Nous ecrire</h2>
+      <p>
+        Envoyez-nous un email a l'adresse suivante :
+        <a href="mailto:contact@casinoenligne.paris" class="text-amber-400">contact@casinoenligne.paris</a>
+      </p>
+      <p>
+        Nous nous efforcons de repondre a toutes les demandes sous 48 heures ouvrees.
+      </p>
+
+      <h2>Partenariats</h2>
+      <p>
+        Vous representez un casino en ligne et souhaitez apparaitre sur CasinoGuide ?
+        Contactez-nous par email en precisant le nom de votre plateforme et les informations
+        de votre programme d'affiliation.
+      </p>
+
+      <h2>Signaler un probleme</h2>
+      <p>
+        Si vous constatez une information incorrecte ou un probleme sur le site,
+        n'hesitez pas a nous le signaler. Nous mettons a jour nos contenus regulierement
+        pour garantir leur exactitude.
+      </p>
+    </div>
+  </article>
+</BaseLayout>

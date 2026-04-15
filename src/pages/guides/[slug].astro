@@ -3,6 +3,7 @@ import { getCollection, render } from 'astro:content';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumbs from '../../components/Breadcrumbs.astro';
 import SchemaMarkup from '../../components/SchemaMarkup.astro';
+import RelatedContent from '../../components/RelatedContent.astro';
 
 export async function getStaticPaths() {
   const guides = await getCollection('guides');
@@ -15,6 +16,16 @@ export async function getStaticPaths() {
 const { guide } = Astro.props;
 const { Content } = await render(guide);
 const siteUrl = Astro.site?.origin ?? '';
+
+const allGuides = await getCollection('guides');
+const relatedGuides = allGuides
+  .filter((g) => g.data.slug !== guide.data.slug)
+  .slice(0, 3)
+  .map((g) => ({
+    title: g.data.title,
+    href: `/guides/${g.data.slug}/`,
+    description: g.data.description,
+  }));
 
 const articleSchema = {
   '@context': 'https://schema.org',
@@ -63,5 +74,7 @@ const articleSchema = {
     <div class="prose prose-invert mt-8 max-w-none">
       <Content />
     </div>
+
+    <RelatedContent heading="Guides recommandes" items={relatedGuides} />
   </article>
 </BaseLayout>

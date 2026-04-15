@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+---
+
+<BaseLayout
+  title="A propos | CasinoGuide"
+  description="Decouvrez CasinoGuide, votre source independante d'avis et comparatifs de casinos en ligne en France."
+>
+  <article class="mx-auto max-w-4xl px-4 py-8">
+    <Breadcrumbs
+      items={[
+        { label: 'Accueil', href: '/' },
+        { label: 'A propos' },
+      ]}
+    />
+
+    <h1 class="mt-6 text-3xl font-bold md:text-4xl">A propos de CasinoGuide</h1>
+
+    <div class="prose prose-invert mt-8 max-w-none">
+      <p>
+        CasinoGuide est un site independant de comparaison et d'avis sur les casinos en ligne
+        accessibles depuis la France. Notre mission est de fournir aux joueurs des informations
+        fiables, objectives et a jour pour les aider a choisir la plateforme qui leur convient le mieux.
+      </p>
+
+      <h2>Notre approche</h2>
+      <p>
+        Chaque casino presente sur notre site est evalue selon des criteres stricts :
+        securite et licences, qualite du catalogue de jeux, generosites des bonus et equite
+        de leurs conditions, methodes de paiement, et reactivite du support client.
+      </p>
+
+      <h2>Transparence</h2>
+      <p>
+        CasinoGuide peut percevoir une commission lorsqu'un utilisateur s'inscrit via nos liens
+        d'affiliation. Cela n'affecte en rien nos evaluations, qui restent independantes et basees
+        sur des criteres objectifs. Les liens d'affiliation sont clairement identifies.
+      </p>
+
+      <h2>Jeu responsable</h2>
+      <p>
+        Nous encourageons une pratique du jeu responsable. Le jeu comporte des risques :
+        endettement, dependance, isolement. Si vous rencontrez des difficultes, contactez
+        le 09 74 75 13 13 (appel non surtaxe).
+      </p>
+    </div>
+  </article>
+</BaseLayout>

@@ -10,6 +10,16 @@ const websiteSchema = {
   name: 'CasinoGuide',
   url: siteUrl,
 };
+
+const organizationSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Organization',
+  name: 'CasinoGuide',
+  url: siteUrl,
+  logo: `${siteUrl}/favicon.svg`,
+  description: 'Comparatif et avis des meilleurs casinos en ligne en France.',
+  sameAs: [],
+};
 ---
 
 <BaseLayout
@@ -17,6 +27,7 @@ const websiteSchema = {
   description="Trouvez les meilleurs casinos en ligne avec nos avis d'experts, comparatifs et bonus exclusifs."
 >
   <SchemaMarkup schema={websiteSchema} />
+  <SchemaMarkup schema={organizationSchema} />
 
   <section class="mx-auto max-w-6xl px-4 py-16">
     <h1 class="text-4xl font-bold md:text-5xl">
